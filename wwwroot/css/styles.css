@@ -53,19 +53,80 @@
     background-position: 100% center;
 }
 
-div.scroll-container {
-    overflow: auto;
+.scroll-container {
+    position: relative;
+    overflow-x: scroll;
     white-space: nowrap;
     padding: 10px;
 }
 
-div.scroll-container img {
+.scroll-content {
+    display: inline-flex;
+}
+
+.scroll-container img {
     padding: 10px;
 }
 
-.scroll-container {
-    margin-top: 20px;
+.scroll-button {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    font-size: 24px;
+    color: #575756;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+    .scroll-button.left {
+        left: 20px;
+    }
+
+    .scroll-button.right {
+        right: 20px;
+    }
+
+.image-container {
+    position: relative;
+    width: 50%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+}
+
+.image-container:hover .overlay {
+    opacity: 0.85;
+}
+
+.text {
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Courier New';
+    font-weight: bold;
+}
 
 

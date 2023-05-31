@@ -3,7 +3,7 @@
 }
 
 <link rel="stylesheet" href="/css/styles.css" />
-<script src="/js/script.js"></script>
+
 
 <div class="text-center">
     <h1 class="display-4">Explore Concerts and Events</h1>
@@ -14,8 +14,41 @@
 </div>
 
 <div class="scroll-container">
-    <img class="event" src="/images/drake.jpg" alt="Drake" />
-    <img class="event" src="/images/edsheeran.jpg" alt="Ed Sheeran" />
-    <img class="event" src="/images/sza.jpg" alt="SZA" />
-    <img class="event" src="/images/swift.jpg" alt="Taylor Swift" />
+    <div class="scroll-content">
+        <div class="image-container">
+            <img class="event" src="/images/drake.jpg" alt="Drake" />
+            <div class="overlay">
+                <div class="text">Drake</div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="event" src="/images/edsheeran.jpg" alt="Ed Sheeran" />
+            <div class="overlay">
+                <div class="text">Ed Sheeran</div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="event" src="/images/sza.jpg" alt="SZA" />
+            <div class="overlay">
+                <div class="text">SZA</div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img class="event" src="/images/swift.jpg" alt="Taylor Swift" />
+            <div class="overlay">
+                <div class="text">Taylor Swift</div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<button class="scroll-button left" onclick="scrollLeft()">
+    <img src="/images/left-arrow.png" alt="Left Arrow" width="75" height="75"/>
+</button>
+<button class="scroll-button right" onclick="scrollRight()">
+        <img src="/images/right-arrow.png" alt="Right Arrow" width="75" height="75"/>
+</button>
+
+<script src="/js/script.js"></script>
+
+

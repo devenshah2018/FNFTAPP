@@ -6,7 +6,7 @@
 
 
 <div class="text-center">
-    <h1 class="display-4">Explore Concerts and Events</h1>
+    <h1 class="display-4" id="title">Explore Concerts and Events</h1>
 </div>
 
 <div class="search-bar">
@@ -14,28 +14,36 @@
 </div>
 
 <div class="scroll-container">
+    
     <div class="scroll-content">
+        
+        
         <div class="image-container">
-            <img class="event" src="/images/drake.jpg" alt="Drake" />
-            <div class="overlay">
+            <script>
+                function redirect() {
+                    document.getElementById("title").textContent = "Hi"
+                }
+            </script>
+            <img class="event" id="drake" src="/images/drake.jpg" alt="Drake" />
+            <div class="overlay" onclick="redirectToEvent('drake')">
                 <div class="text">Drake</div>
             </div>
         </div>
         <div class="image-container">
-            <img class="event" src="/images/edsheeran.jpg" alt="Ed Sheeran" />
-            <div class="overlay">
+            <img class="event" id="ed-sheeran" src="/images/edsheeran.jpg" alt="Ed Sheeran" />
+            <div class="overlay" onclick="redirectToEvent('ed-sheeran')">
                 <div class="text">Ed Sheeran</div>
             </div>
         </div>
         <div class="image-container">
-            <img class="event" src="/images/sza.jpg" alt="SZA" />
-            <div class="overlay">
+            <img class="event" id="sza" src="/images/sza.jpg" alt="SZA" onclick="redirectToEvent('sza')"/>
+            <div class="overlay" onclick="redirectToEvent('sza')">
                 <div class="text">SZA</div>
             </div>
         </div>
         <div class="image-container">
-            <img class="event" src="/images/swift.jpg" alt="Taylor Swift" />
-            <div class="overlay">
+            <img class="event" id="taylor-swift" src="/images/swift.jpg" alt="Taylor Swift" />
+            <div class="overlay" onclick="redirectToEvent('taylor-swift')">
                 <div class="text">Taylor Swift</div>
             </div>
         </div>
@@ -49,6 +57,8 @@
         <img src="/images/right-arrow.png" alt="Right Arrow" width="75" height="75"/>
 </button>
 
+<script src="/js/routing.js"></script>
 <script src="/js/script.js"></script>
+
 
 

@@ -109,6 +109,7 @@
     opacity: 0;
     transition: .5s ease;
     background-color: #008CBA;
+    cursor: pointer;
 }
 
 .image-container:hover .overlay {

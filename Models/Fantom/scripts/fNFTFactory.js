@@ -3,14 +3,15 @@ const hre = require("hardhat");
 
 async function main() {
     // Deploy the FNFTGenerator contract
+    // const fTFactory = await ethers.getContractFactory("FNFTGenerator");
     const FNFTGenerator = await ethers.getContractFactory("FNFTGenerator");
 
     const fnftGenerator = await FNFTGenerator.deploy();
     
     const myNFT = await ethers.getContractFactory("ERC721");
-    const MyNFT = await myNFT.deploy();
-    await MyNFT.deployed();
-    await fnftGenerator.deployed();
+    const MyNFT = await myNFT.deploy("ERC721", "ERC721");
+    await MyNFT.deployed("ERC721", "ERC721");
+    await fnftGenerator.deployed("FNFTGenerator", "OFT");
 
     // Log the contract address
     console.log("FNFTGenerator deployed to:", fnftGenerator.address);
@@ -20,8 +21,7 @@ async function main() {
     console.log("Owner address:", ownerAddress);
 
     // Collect OG NFT 
-    // const [owner] = await ethers.getSigners();
-    fnftGenerator.connect(MyNFT).setCollectOGNFT(MyNFT.address);
+    fnftGenerator.setCollectOGNFT(MyNFT.address);
 
     // List for sale
     await fnftGenerator.listForSale(1);
@@ -39,20 +39,9 @@ async function main() {
     console.log("Redeem transaction hash:", redeemTx.hash);
     }
 
-<<<<<<< HEAD
 main()
     .then(() => process.exit(0))
     .catch((error) => {
     console.error(error);
     process.exit(1);
     });
-
-=======
->>>>>>> ed0677e0660b6c712073210a8ddb03d3d20ae24c
-
-main()
-.then(() => process.exit())
-.catch((error) => {
-console.error(error);
-process.exit(1);
-});

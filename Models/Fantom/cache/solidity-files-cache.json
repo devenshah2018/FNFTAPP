@@ -625,6 +625,7 @@
       "artifacts": [
         "Math"
       ]
+<<<<<<< HEAD
     },
     "/Users/apoorva/.Sol/hackathon/FNFTAPP/Models/Fantom/contracts/ERC1155.sol": {
       "lastModificationDate": 1685591371058,
@@ -964,6 +965,8 @@
       "artifacts": [
         "IERC1155MetadataURI"
       ]
+=======
+>>>>>>> ed0677e0660b6c712073210a8ddb03d3d20ae24c
     }
   }
 }

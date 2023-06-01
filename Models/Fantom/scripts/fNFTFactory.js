@@ -39,6 +39,7 @@ async function main() {
     console.log("Redeem transaction hash:", redeemTx.hash);
     }
 
+<<<<<<< HEAD
 main()
     .then(() => process.exit(0))
     .catch((error) => {
@@ -46,6 +47,8 @@ main()
     process.exit(1);
     });
 
+=======
+>>>>>>> ed0677e0660b6c712073210a8ddb03d3d20ae24c
 
 main()
 .then(() => process.exit())

@@ -1,0 +1,63 @@
+﻿@import 'https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&subset=cyrillic,cyrillic-ext,latin-ext';
+
+
+body {
+    font-family: comfortaa;
+}
+
+.create-account-form {
+    width: 1200px;
+    margin: 30px auto;
+    background-color: #fff;
+    border: none;
+    padding: 10px 10px;
+}
+
+    .create-account-form h1 {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 40px;
+    }
+
+.float-label-field {
+    border: none;
+    outline: none;
+    position: relative;
+    margin: 0 0 20px 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+    .float-label-field input {
+        border: none;
+        outline: none;
+        padding: 5px 5px 8px 0px;
+        width: 100%;
+        font-size: 18px;
+        border-bottom: solid 1px #efefef;
+    }
+
+    .float-label-field label {
+        opacity: 0.5;
+        position: absolute;
+        top: 10px;
+        left: 0px;
+        transition: all 0.2s ease;
+        font-size: 18px;
+    }
+
+    .float-label-field.focus label {
+        color: #4f9eff;
+    }
+
+    .float-label-field.focus input {
+        border-bottom: solid 1px #4f9eff;
+    }
+
+    .float-label-field.float label {
+        opacity: 1;
+        top: -8px;
+        font-size: 60%;
+        transition: all 0.2s ease;
+        font-weight: bold;
+    }

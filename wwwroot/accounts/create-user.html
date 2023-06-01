@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="/css/create-account.css" />
@@ -6,6 +8,7 @@
 
 <body>
     <script src="/js/create-account.js"></script>
+    <div id="topBarContainer"></div>
     <div class="create-account-form">
         <h1>Create An Account</h1>
 
@@ -33,6 +36,14 @@
             <label for="txtConfirmPassword">Confirm Password</label>
             <input id="txtConfirmPassword" type='password'>
         </fieldset>
+    </div>
+    <div class="button-container">
+        <button class="button signup green">
+            <span>Sign Up</span>
+        </button>
+        <button class="button cancel red" onclick="history.back()">
+            <span>Cancel</span>
+        </button>
     </div>
 </body>
 </html>

@@ -61,3 +61,189 @@ body {
         transition: all 0.2s ease;
         font-weight: bold;
     }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(85,75,85);
+    background-color: rgb(255,255,255);
+}
+
+h1 {
+    padding: 50px 0;
+    font-size: 45px;
+    text-align: center;
+    color: rgb(54, 56, 55);
+}
+
+:active, :hover, :focus {
+    outline: 0 !important;
+    outline-offset: 0;
+}
+
+::before,
+::after {
+    position: absolute;
+    content: "";
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-width: 1000px;
+    margin: 10px auto 35px;
+    background-color: transparent;
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0px 25px 15px;
+    min-width: 150px;
+    font-family: comfortaa;
+    left: -125px;
+    font-weight: bold;    
+}
+
+    .button span {
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 25px;
+        transition: 0.3s;
+    }
+
+
+.cancel span {
+    color: rgb(28, 31, 30);
+    border: 2px solid red;
+    transition: 0.2s;
+}
+
+    .cancel span:hover {
+        background-color: rgba(255, 0, 0, 0.25);
+    }
+
+.button.red::before,
+.button.red::after {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    z-index: 2;
+    transition: 0.35s;
+}
+
+.button.red::before {
+    top: 0;
+    right: 0;
+}
+
+.button.red::after {
+    bottom: 0;
+    left: 0;
+}
+
+.button.red:hover::before,
+.button.red:hover::after {
+    width: 0%;
+    transition: 0.2s 0.2s ease-out;
+}
+
+.button.red span::before,
+.button.red span::after {
+    width: 2px;
+    height: 100%;
+    background-color: white;
+    z-index: 2;
+    transition: 0.25s;
+}
+
+.button.red span::before {
+    bottom: 0;
+    right: -2px;
+}
+
+.button.red span::after {
+    top: 0;
+    left: -2px;
+}
+
+.button.red span:hover::before,
+.button.red span:hover::after {
+    height: 0%;
+}
+.signup span {
+    color: rgb(28, 31, 30);
+    border: 2px solid rgb(50, 205, 50); /* Set the border color to green */
+    transition: 0.2s;
+}
+
+    .signup span:hover {
+        background-color: rgba(50, 205, 50, 0.25); /* Set the background color to green */
+    }
+
+.button.green::before,
+.button.green::after {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    z-index: 2;
+    transition: 0.35s;
+}
+
+.button.green::before {
+    top: 0;
+    right: 0;
+}
+
+.button.green::after {
+    bottom: 0;
+    left: 0;
+}
+
+.button.green:hover::before,
+.button.green:hover::after {
+    width: 0%;
+    transition: 0.2s 0.2s ease-out;
+}
+
+.button.green span::before,
+.button.green span::after {
+    width: 2px;
+    height: 100%;
+    background-color: white;
+    z-index: 2;
+    transition: 0.25s;
+}
+
+.button.green span::before {
+    bottom: 0;
+    right: -2px;
+}
+
+.button.green span::after {
+    top: 0;
+    left: -2px;
+}
+
+.button.green span:hover::before,
+.button.green span:hover::after {
+    height: 0%;
+}

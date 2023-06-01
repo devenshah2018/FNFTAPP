@@ -10,38 +10,31 @@
 </div>
 
 <div class="search-bar">
-    <input class="search-input" type="text" placeholder="Search events..." />
+    <input class="search-input" type="text" placeholder="Search events..." onkeyup="filterImages()" />
 </div>
 
 <div class="scroll-container">
     
     <div class="scroll-content">
-        
-        
-        <div class="image-container">
-            <script>
-                function redirect() {
-                    document.getElementById("title").textContent = "Hi"
-                }
-            </script>
+        <div class="image-container drake">
             <img class="event" id="drake" src="/images/drake.jpg" alt="Drake" />
             <div class="overlay" onclick="redirectToEvent('drake')">
                 <div class="text">Drake</div>
             </div>
         </div>
-        <div class="image-container">
+        <div class="image-container ed-sheeran">
             <img class="event" id="ed-sheeran" src="/images/edsheeran.jpg" alt="Ed Sheeran" />
             <div class="overlay" onclick="redirectToEvent('ed-sheeran')">
                 <div class="text">Ed Sheeran</div>
             </div>
         </div>
-        <div class="image-container">
+        <div class="image-container sza">
             <img class="event" id="sza" src="/images/sza.jpg" alt="SZA" onclick="redirectToEvent('sza')"/>
             <div class="overlay" onclick="redirectToEvent('sza')">
                 <div class="text">SZA</div>
             </div>
         </div>
-        <div class="image-container">
+        <div class="image-container taylor-swift">
             <img class="event" id="taylor-swift" src="/images/swift.jpg" alt="Taylor Swift" />
             <div class="overlay" onclick="redirectToEvent('taylor-swift')">
                 <div class="text">Taylor Swift</div>

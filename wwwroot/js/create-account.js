@@ -1,29 +1,3 @@
-// Fetch the content of _Layout.cshtml
-fetch('/_Layout.cshtml')
-    .then(response => response.text())
-    .then(data => {
-        // Extract the top bar HTML
-        const topBarHTML = extractTopBarHTML(data);
-
-        // Append the top bar HTML to the container
-        document.getElementById('topBarContainer').innerHTML = topBarHTML;
-    })
-    .catch(error => {
-        console.error('Error fetching _Layout.cshtml:', error);
-    });
-
-// Function to extract the top bar HTML from _Layout.cshtml content
-function extractTopBarHTML(layoutHTML) {
-    // Parse the layout HTML using DOM manipulation
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(layoutHTML, 'text/html');
-
-    // Extract the top bar HTML using DOM selection
-    const topBar = doc.querySelector('.top-bar');
-
-    // Return the HTML content of the top bar
-    return topBar.innerHTML;
-}
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -55,4 +29,41 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+
 });
+
+
+
+
+function signup() {
+    theName = document.getElementById("txtName").value;
+    theEmail = document.getElementById("txtEmail").value;
+    theWalletAddress = document.getElementById("txtWallet").value;
+    thePassword = document.getElementById("txtPassword").value;
+
+    // Aggregate database
+    const data = {
+        name: theName,
+        email: theEmail,
+        wallet_address: theWalletAddress,
+        password: thePassword
+    };
+
+    fetch('/api/Data/addUser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log('Record inserted successfully.');
+            } else {
+                console.log('Failed to insert record.');
+            }
+        });
+    
+
+}

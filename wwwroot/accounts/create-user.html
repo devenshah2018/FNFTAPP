@@ -13,7 +13,7 @@
         <h1>Create An Account</h1>
 
         <fieldset class='float-label-field'>
-            <label for="txtName">Name</label>
+            <label for="txtName">Full Name</label>
             <input id="txtName" type='text'>
         </fieldset>
 
@@ -23,7 +23,7 @@
         </fieldset>
 
         <fieldset class='float-label-field'>
-            <label for="txtWallet">Enter ETH Wallet Address</label>
+            <label for="txtWallet">ETH Wallet Address</label>
             <input id="txtWallet" type='text'>
         </fieldset>
 
@@ -38,7 +38,7 @@
         </fieldset>
     </div>
     <div class="button-container">
-        <button class="button signup green">
+        <button class="button signup green" onclick="signup()">
             <span>Sign Up</span>
         </button>
         <button class="button cancel red" onclick="history.back()">

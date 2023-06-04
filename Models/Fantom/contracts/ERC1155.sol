@@ -2,72 +2,80 @@
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 
 contract SFTix is ERC1155, Ownable, ERC1155Burnable, ERC1155Supply {
+    // At contract constructor accept 2 tokens price and supply
+
+    // The constructor for the contract
+    constructor() ERC1155("SFTix") {}
     
-    // string public GATicket; 
-    uint256 public constant GA_token = 1;
-    uint256 public constant VIP_token = 2;
-    uint256 public constant RSVP_token = 3;
+    uint256 public constant GA_TOKEN_ID = 1;
+    uint256 public constant VIP_TOKEN_ID = 2;
 
-    uint256 public ticketGAPrice;
-    uint256 public ticketVIPPrice;
-    uint256 public ticketRSVPPrice;
+    uint256 public _GAPrice;
+    uint256 public _VIPPrice;
 
-    uint256 public maxSupplyGA;
-    uint256 public maxSupplyVIP;
-    uint256 public maxSupplyRSVP;
+    uint256 public _GASupply;
+    uint256 public _VIPSupply;
 
-    mapping(uint256 => uint256) public tokenSupply;
+    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId, uint256 amount);
 
-    constructor() ERC1155("") {}
 
-    function setURI(string memory newURI) public onlyOwner {
-        _setURI(newURI);
+
+    function _setTokenPrices(uint256[] memory _GATickets, uint256[] memory _VIPTickets) public view {
+        _GATickets[0] = _GAPrice; 
+        _GATickets[1] = _GASupply; 
+
+        _VIPTickets[0] = _VIPPrice;
+        _VIPTickets[1] = _VIPSupply;
+
     }
 
-    function setTicketPrice(uint256 _ticketGAPrice, uint256 _ticketVIPPrice, uint256 _ticketRSVPPrice) public onlyOwner {
-        ticketGAPrice = _ticketGAPrice;
-        ticketVIPPrice = _ticketVIPPrice;
-        ticketRSVPPrice = _ticketRSVPPrice;
-    }
+    //to == ticket requester
+    //tokenId == GA or VIP
+    //amount == # of tickets
+    //data == any additional messages/data
 
-    function setSupply(uint256 _maxSupplyGA, uint256 _maxSupplyVIP, uint256 _maxSupplyRSVP) public onlyOwner {
-        maxSupplyGA = _maxSupplyGA;
-        maxSupplyVIP = _maxSupplyVIP;
-        maxSupplyRSVP = _maxSupplyRSVP;
-    }
-
-    function buyTicket(uint256 tokenId) external payable {
-        require(tokenId >= GA_token && tokenId <= RSVP_token, "Invalid token ID");
-
-        uint256 price;
-        uint256 maxSupply;
-        if (tokenId == GA_token) {
-            price = ticketGAPrice;
-            maxSupply = maxSupplyGA;
-        } else if (tokenId == VIP_token) {
-            price = ticketVIPPrice;
-            maxSupply = maxSupplyVIP;
-        } else if (tokenId == RSVP_token) {
-            price = ticketRSVPPrice;
-            maxSupply = maxSupplyRSVP;
+    function mint(address to, uint256 tokenId, uint256 amount, string memory data) public payable onlyOwner{
+        require(msg.value >= _GAPrice);
+        to = msg.sender;
+        //Check if msg.value is >= _GAPrice 
+        if(tokenId == GA_TOKEN_ID) {
+            mint(to, tokenId, amount, data);
+        } else {
+            if(tokenId == VIP_TOKEN_ID) {
+                mint(to, tokenId, amount, data);
+            }
         }
+        //Check if msg.value == _VIPPrice 
+        
+        
+    }
 
-        // require(msg.value >= price, "Insufficient payment");
-        require(tokenSupply[tokenId] < maxSupply, "Maximum supply reached");
+    function transferToken(address from, address to, uint256 tokenId, uint256 amount) external {
+        // to = { receiver wallet address}
+        from = msg.sender;
+        to = msg.sender; 
+        // Check if the caller has sufficient balance
+        require(balanceOf(from, tokenId) >= amount, "Insufficient balance");
 
-        tokenSupply[tokenId] += 1;
+        // Transfer the tokens from 'from' to 'to'
+        safeTransferFrom(from, to, tokenId, amount, "");
 
-        _mint(msg.sender, tokenId, 1, "");
+        // Emit a transfer event
+        emit Transfer(from, to, tokenId, amount);
     }
 
     function withdrawFunds() external onlyOwner {
         payable(owner()).transfer(address(this).balance);
     }
+
+
+
 
     function _beforeTokenTransfer(
         address operator,

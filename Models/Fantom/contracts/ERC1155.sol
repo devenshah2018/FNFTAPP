@@ -9,10 +9,22 @@ import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 
 contract SFTix is ERC1155, Ownable, ERC1155Burnable, ERC1155Supply {
     // At contract constructor accept 2 tokens price and supply
+    uint256 public constant _GA = 0;
+    uint256 public constant _VIP = 1;
 
-    // The constructor for the contract
-    constructor() ERC1155("SFTix") {}
-    
+    address caller = msg.sender;
+
+    // Mapping from token ID to token type.
+    mapping(uint256 => string) public tokenType;
+
+    // Constructor function.
+    constructor() ERC1155("https://example.com/api/ticket/{id}.json") {
+        // Mint 1000 GA tickets.
+        mint(msg.sender, 1000, _GA, "");
+        // Mint 50 VIP tickets.
+        mint(msg.sender, 50, _VIP, "");
+    }
+
     uint256 public constant GA_TOKEN_ID = 1;
     uint256 public constant VIP_TOKEN_ID = 2;
 
@@ -22,60 +34,68 @@ contract SFTix is ERC1155, Ownable, ERC1155Burnable, ERC1155Supply {
     uint256 public _GASupply;
     uint256 public _VIPSupply;
 
-    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId, uint256 amount);
+    event Transfer(
+        address indexed from,
+        address indexed to,
+        uint256 indexed tokenId,
+        uint256 amount
+    );
 
-
-
-    function _setTokenPrices(uint256[] memory _GATickets, uint256[] memory _VIPTickets) public view {
-        _GATickets[0] = _GAPrice; 
-        _GATickets[1] = _GASupply; 
+    function _setTokenPrices(
+        uint256[] memory _GATickets,
+        uint256[] memory _VIPTickets
+    ) public view {
+        _GATickets[0] = _GAPrice;
+        _GATickets[1] = _GASupply;
 
         _VIPTickets[0] = _VIPPrice;
         _VIPTickets[1] = _VIPSupply;
-
     }
 
-    //to == ticket requester
-    //tokenId == GA or VIP
-    //amount == # of tickets
-    //data == any additional messages/data
 
-    function mint(address to, uint256 tokenId, uint256 amount, string memory data) public payable onlyOwner{
+
+    function mint(
+        address to,
+        uint256 tokenId,
+        uint256 amount,
+        bytes4 data
+    ) public payable onlyOwner {
         require(msg.value >= _GAPrice);
         to = msg.sender;
-        //Check if msg.value is >= _GAPrice 
-        if(tokenId == GA_TOKEN_ID) {
+        //Check if msg.value is >= _GAPrice
+        if (tokenId == GA_TOKEN_ID) {
             mint(to, tokenId, amount, data);
         } else {
-            if(tokenId == VIP_TOKEN_ID) {
+            if (tokenId == VIP_TOKEN_ID) {
                 mint(to, tokenId, amount, data);
             }
         }
-        //Check if msg.value == _VIPPrice 
-        
-        
     }
 
-    function transferToken(address from, address to, uint256 tokenId, uint256 amount) external {
-        // to = { receiver wallet address}
-        from = msg.sender;
-        to = msg.sender; 
+    function _safeBatchTransfer(
+        address[] memory from,
+        address[] memory to,
+        uint256[] memory tokenIds,
+        uint256[] memory amounts
+    ) internal {
         // Check if the caller has sufficient balance
-        require(balanceOf(from, tokenId) >= amount, "Insufficient balance");
+        for (uint256 i = 0; i < from.length; i++) {
+            require(
+                balanceOf(from[i], tokenIds[i]) >= amounts[i],
+                "Insufficient balance"
+            );
+        }
 
         // Transfer the tokens from 'from' to 'to'
-        safeTransferFrom(from, to, tokenId, amount, "");
+        for (uint256 i = 0; i < from.length; i++) {
+            safeTransferFrom(from[i], to[i], tokenIds[i], amounts[i], "");
+        }
 
         // Emit a transfer event
-        emit Transfer(from, to, tokenId, amount);
+        for (uint256 i = 0; i < from.length; i++) {
+            emit Transfer(from[i], to[i], tokenIds[i], amounts[i]);
+        }
     }
-
-    function withdrawFunds() external onlyOwner {
-        payable(owner()).transfer(address(this).balance);
-    }
-
-
-
 
     function _beforeTokenTransfer(
         address operator,

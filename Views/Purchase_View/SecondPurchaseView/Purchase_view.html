@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ticket Purchase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Ticket Purchase</h1>
+    <div class="ticket-selectors">
+        <label for="ga-tickets">General Admission Tickets</label>
+        <input type="number" id="ga-tickets" min="0" max="10">
+        <label for="vip-tickets">VIP Tickets</label>
+        <input type="number" id="vip-tickets" min="0" max="5">
+    </div>
+    <button id="buy-now">Buy Now</button>
+    <script src="script.js"></script>
+    <script>
+        // This function is called when the user clicks the Buy Now button.
+        function buyNow() {
+            // Get the number of general admission tickets.
+            var gaTickets = document.getElementById("ga-tickets").value;
+            // Get the number of VIP tickets.
+            var vipTickets = document.getElementById("vip-tickets").value;
+            // Get the artist name from the URL search params.
+            var urlParams = new URLSearchParams(window.location.search);
+            var artist = urlParams.get("artist");
+            artist = artist.toUpperCase();
+            // Display a message indicating how many tickets the user has purchased and the artist name.
+            alert("You have purchased " + gaTickets + " general admission tickets, " + vipTickets + " VIP tickets, and you are seeing " + artist + ".");
+        }
+
+        // Attach the buyNow() function to the Buy Now button.
+        document.getElementById("buy-now").onclick = buyNow;
+    </script>
+</body>
+
+</html>

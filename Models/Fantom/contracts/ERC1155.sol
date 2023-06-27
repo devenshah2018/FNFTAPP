@@ -21,17 +21,17 @@ contract SFTix is ERC1155, Ownable {
     // Array of VIP ticket prices.
     uint256[] public _Array_VIP;
 
-    constructor(uint256 _GASupply, uint256 _GAPrice, uint256 _VIPSupply, uint256 _VIPPrice) ERC1155("https://example.com/api/ticket/{id}.json") {
+    constructor() ERC1155("https://example.com/api/ticket/{id}.json") {
         // Set the value of the mapping to true.
         isEventCreator[msg.sender] = true;
 
         // Initialize and set the GA ticket array.
-        _Array_GA.push(_GAPrice);
-        _Array_GA.push(_GASupply);
+        _Array_GA.push(1);
+        _Array_GA.push(100);
 
         // Initialize and set the VIP ticket array.
-        _Array_VIP.push(_VIPPrice);
-        _Array_VIP.push(_VIPSupply);
+        _Array_VIP.push(100);
+        _Array_VIP.push(10);
 
     }
     // Mint to contract deployer address

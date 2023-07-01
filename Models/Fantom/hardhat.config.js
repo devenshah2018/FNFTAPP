@@ -2,15 +2,19 @@ require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
 
-const INFURA_API_KEY = process.env.INFURA_API_KEY;
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
+// const INFURA_API_KEY = process.env.INFURA_API_KEY;
+// const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 module.exports = {
   networks: {
-    mainnet: {
-      url: `https://rpc.ankr.com/fantom/6acfc6a71c6ee93f5f3fe7efbc0c378b7b5c8129a51030f9047b273ea6eef79c`,
+    fantom: {
+
+      // Quicknode Fantom mainnet endpoint
+      url: `https://polished-billowing-star.fantom.discover.quiknode.pro/649d2397b901115a41e87c0855f0dee31ac447d4/`,
+      
       chainId: 250,
-      accounts: ['0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d'],
+
+      accounts: ['c77af31768a1a656eeebaa770af5f61d9632dfa54f6439fc08f9ad534aa9d942'],
     },
   },
   coverage: { 

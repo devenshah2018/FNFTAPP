@@ -1,61 +1,38 @@
-// 6-13 copied from Fantom project 
-
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-// import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
-// import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
-// import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
 
-contract SFTix is ERC1155, Ownable {
+contract EventTickets is ERC1155, Ownable, ERC1155Supply {
+    
+    // Declare all the type IDs
+    uint256 public constant GENERAL = 0;
+    uint256 public constant VIP = 1;
 
-    // Create a mapping, isEventOwner
-    mapping(address => bool) public isEventCreator;
 
+    
+    constructor() ERC1155("") {
+        uint256[] memory tokenIds = new uint256[](2);
+        uint256[] memory amounts = new uint256[](2);
 
-    // Array of GA ticket prices.
-    uint256[] public _Array_GA;
+        tokenIds[0] = uint256(0);
+        amounts[0] = uint256(2);
 
-    // Array of VIP ticket prices.
-    uint256[] public _Array_VIP;
+        tokenIds[1] = uint256(1);
+        amounts[1] = uint256(1);
 
-    constructor() ERC1155("https://example.com/api/ticket/{id}.json") {
-        // Set the value of the mapping to true.
-        isEventCreator[msg.sender] = true;
+        _mintBatch(msg.sender, tokenIds, amounts, "");
 
-        // Initialize and set the GA ticket array.
-        _Array_GA.push(1);
-        _Array_GA.push(100);
-
-        // Initialize and set the VIP ticket array.
-        _Array_VIP.push(100);
-        _Array_VIP.push(10);
 
     }
-    // Mint to contract deployer address
-    function mint( address to, uint256 tokenId, uint256 amount, bytes4 data) public { 
-        to = 0xE83897F5a8c428203dfB8b12AD242415D3c99d67;
 
-        // Check if the caller is the contract deployer.
-        require(isEventCreator[msg.sender]);
 
-        // Check if the token ID is valid.
-        require(tokenId < _Array_GA.length || tokenId < _Array_VIP.length);
-
-        // Check if the amount is valid.
-        require(amount > 0);
-
-        // Mint all tokens to the ticket market address.
-        for (uint i = 0; i < _Array_GA.length; i++) {
-            mint(to, i, _Array_GA[i], data);
-        }
-
-        for (uint i = 0; i < _Array_VIP.length; i++) {
-            mint(to, i + _Array_GA.length, _Array_VIP[i], data);
-        }
+    function _beforeTokenTransfer(address operator, address from, address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)
+        internal
+        override(ERC1155, ERC1155Supply)
+    {
+        super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
     }
-
 }
-

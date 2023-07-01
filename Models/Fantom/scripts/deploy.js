@@ -2,7 +2,7 @@ const hre = require("hardhat");
 
 async function main() {
 
-    const ERC1155Contract = await hre.ethers.getContractFactory("SFTix");
+    const ERC1155Contract = await hre.ethers.getContractFactory("EventTickets");
     const erc1155Contract = await ERC1155Contract.deploy();
     
     await erc1155Contract.deployed();

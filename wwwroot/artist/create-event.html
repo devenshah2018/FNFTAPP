@@ -1,0 +1,62 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/css/create-event.css" />
+    
+</head>
+
+<body>
+    <script src="/js/create-account.js"></script>
+    <div id="topBarContainer"></div>
+    <div class="create-account-form">
+        <h1>Create An Event</h1>
+
+        <fieldset class='float-label-field'>
+            <label for="txtName">Event Name</label>
+            <input id="txtName" type='text'>
+        </fieldset>
+
+        <fieldset class='float-label-field'>
+            <label for="txtLocation">Location</label>
+            <input id="txtLocation" type='text'>
+        </fieldset>
+
+        <fieldset id="date-time" class='float-label-field'>
+            <label for="txtTime">Date and Time</label>
+            <input id="txtTime" type='datetime-local'>
+        </fieldset>
+
+        <fieldset class='float-label-field'>
+            <label for="numGA">Number of GA Tickets</label>
+            <input id="numGA" type='text'>
+        </fieldset>
+
+        <fieldset class='float-label-field' style="display: none;">
+            <label for="priceGA">Price Per GA Ticket</label>
+            <input id="priceGA" type='text'>
+        </fieldset>
+
+        <fieldset class='float-label-field'>
+            <label for="numVIP">Number of VIP Tickets</label>
+            <input id="numVIP" type='text'>
+        </fieldset>
+
+        <fieldset class='float-label-field' style="display: none;">
+            <label for="priceVIP">Price Per VIP Ticket</label>
+            <input id="priceVIP" type='text'>
+        </fieldset>
+
+
+    </div>
+    <div class="button-container">
+        <button class="button signup green" onclick="deployContract()">
+            <span>Create Event</span>
+        </button>
+        <button class="button cancel red" onclick="history.back()">
+            <span>Cancel</span>
+        </button>
+    </div>
+    <script src="/js/create-event.js"></script>
+</body>
+</html>

@@ -200,17 +200,127 @@
     border-color: #fff
 }
 
+.connect-wallet {
+    margin-left: 50px;
+    color: #06d606 !important;
+    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #06d606 !important;
+    position: relative;
+    margin: 1em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    font-family: comfortaa;
+    font-weight: bold;
+}
+
+    .connect-wallet:before, .connect-wallet:after {
+        content: '';
+        display: block;
+        position: absolute;
+        border-color: #06d606 !important;
+        box-sizing: border-box;
+        border-style: solid;
+        width: 1em;
+        height: 1em;
+        transition: all 0.3s ease-in-out
+    }
+
+    .connect-wallet:before {
+        top: -6px;
+        left: -6px;
+        border-width: 2px 0 0 2px;
+        z-index: 5;
+    }
+
+    .connect-wallet:after {
+        bottom: -6px;
+        right: -6px;
+        border-width: 0 2px 2px 0;
+    }
+
+    .connect-wallet:hover:before, button:hover:after {
+        width: calc(100% + 12px);
+        height: calc(100% + 12px);
+        border-color: #fff
+    }
+
+    .connect-wallet:hover {
+        color: #fff !important;
+        background-color: #06d606 !important;
+        border-color: #06d606 !important;
+    }
+
+
+.create-event {
+    margin-left: 50px;
+    color: #06d606 !important;
+    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #06d606 !important;
+    position: relative;
+    margin: 1em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    font-family: comfortaa;
+    font-weight: bold;
+}
+
+    .create-event:before, .create-event:after {
+        content: '';
+        display: block;
+        position: absolute;
+        border-color: #06d606 !important;
+        box-sizing: border-box;
+        border-style: solid;
+        width: 1em;
+        height: 1em;
+        transition: all 0.3s ease-in-out
+    }
+
+    .create-event:before {
+        top: -6px;
+        left: -6px;
+        border-width: 2px 0 0 2px;
+        z-index: 5;
+    }
+
+    .create-event:after {
+        bottom: -6px;
+        right: -6px;
+        border-width: 0 2px 2px 0;
+    }
+
+    .create-event:hover:before, button:hover:after {
+        width: calc(100% + 12px);
+        height: calc(100% + 12px);
+        border-color: #fff
+    }
+
+    .create-event:hover {
+        color: #fff !important;
+        background-color: #06d606 !important;
+        border-color: #06d606 !important;
+    }
 .create-container {
+    display: inline-flex;
     max-width: 960px;
     text-align: center;
     position: relative;
     margin: auto;
-    padding-left: 190px;
+    padding-left: 180px;
 }
 
 .create-container button {
     color: #4f9eff;
     border-color: #4f9eff;
+    margin: 0 10px;
 }
 
 .create-container button:before, .create-container button:after {

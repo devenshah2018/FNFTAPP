@@ -9,3 +9,8 @@ function redirectToCreateUser() {
     window.location.href = "/accounts/create-user.html";
 }
 
+function redirectToCreateEvent()
+{
+    window.location.href = "/artist/create-event.html"
+}
+

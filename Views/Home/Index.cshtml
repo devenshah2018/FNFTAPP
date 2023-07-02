@@ -1,21 +1,68 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<head>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="/js/routing.js"></script>
+    <script src="/js/connect-wallet.js" type="module"></script>
+    <script src="/js/script.js" type="module"></script>
+    
+</head>
 
-<link rel="stylesheet" href="/css/styles.css" />
-<script src="/js/script.js"></script>
+<body>
+    <div class="main-header">
+        <h1 class="title">Explore Concerts and Events</h1>
+        <div class="create-container">
+            <button class="create-user" style="display: none;" onclick="redirectToCreateUser()">Create User</button>
+            <button class="connect-wallet" style="display: none;">Connect Wallet</button>
+            <button class="create-event" onclick="redirectToCreateEvent()">Create Event</button>
+        </div>
+    </div>
 
-<div class="text-center">
-    <h1 class="display-4">Explore Concerts and Events</h1>
-</div>
+    <div class="search-bar">
+        <input class="search-input" type="text" placeholder="Search events..." onkeyup="filterImages()" />
+    </div>
 
-<div class="search-bar">
-    <input class="search-input" type="text" placeholder="Search events..." />
-</div>
+    <div class="scroll-container">
+    
+        <div class="scroll-content">
+            <div class="image-container drake">
+                <img class="event" id="drake" src="/images/drake.jpg" alt="Drake" />
+                <div class="overlay" onclick="redirectToEvent('drake')">
+                    <div class="text">Drake</div>
+                </div>
+            </div>
+            <div class="image-container ed-sheeran">
+                <img class="event" id="ed-sheeran" src="/images/edsheeran.jpg" alt="Ed Sheeran" />
+                <div class="overlay" onclick="redirectToEvent('ed-sheeran')">
+                    <div class="text">Ed Sheeran</div>
+                </div>
+            </div>
+            <div class="image-container sza">
+                <img class="event" id="sza" src="/images/sza.jpg" alt="SZA" onclick="redirectToEvent('sza')"/>
+                <div class="overlay" onclick="redirectToEvent('sza')">
+                    <div class="text">SZA</div>
+                </div>
+            </div>
+            <div class="image-container taylor-swift">
+                <img class="event" id="taylor-swift" src="/images/swift.jpg" alt="Taylor Swift" />
+                <div class="overlay" onclick="redirectToEvent('taylor-swift')">
+                    <div class="text">Taylor Swift</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="scroll-container">
-    <img class="event" src="/images/drake.jpg" alt="Drake" />
-    <img class="event" src="/images/edsheeran.jpg" alt="Ed Sheeran" />
-    <img class="event" src="/images/sza.jpg" alt="SZA" />
-    <img class="event" src="/images/swift.jpg" alt="Taylor Swift" />
-</div>
+    <button class="scroll-button left" onclick="scrollLeft()">
+        <img src="/images/left-arrow.png" alt="Left Arrow" width="75" height="75"/>
+    </button>
+    <button class="scroll-button right" onclick="scrollRight()">
+            <img src="/images/right-arrow.png" alt="Right Arrow" width="75" height="75"/>
+    </button>
+    
+</body>
+
+
+
+
+

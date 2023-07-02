@@ -1,4 +1,10 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
+@import 'https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&subset=cyrillic,cyrillic-ext,latin-ext';
+
+.title {
+    font-family: comfortaa;
+    font-size: 40px;
+}
 
 .event {
     width: 400px;
@@ -6,8 +12,9 @@
 }
 
 .search-bar {
-    padding-top: 64px;
+    padding-top: 30px;
     text-align: center;
+    padding-bottom: 20px
 }
 
 .search-bar input[type="text"] {
@@ -41,6 +48,7 @@
     text-transform: uppercase;
     letter-spacing: 1.5px;
     padding-left: 10px;
+    font-family: comfortaa;
 }
 
 .search-input:hover,
@@ -53,19 +61,279 @@
     background-position: 100% center;
 }
 
-div.scroll-container {
-    overflow: auto;
+.scroll-container {
+    position: relative;
+    overflow-x: scroll;
     white-space: nowrap;
     padding: 10px;
 }
 
-div.scroll-container img {
+.scroll-content {
+    display: inline-flex;
+}
+
+.scroll-container img {
     padding: 10px;
 }
 
-.scroll-container {
-    margin-top: 20px;
+.scroll-button {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    font-size: 24px;
+    color: #575756;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.scroll-button.left {
+    left: 20px;
+}
 
+.scroll-button.right {
+    right: 20px;
+}
+
+.image-container {
+    position: relative;
+    width: 50%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+    cursor: pointer;
+}
+
+.image-container:hover .overlay {
+    opacity: 0.85;
+}
+
+.text {
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: comfortaa;
+    font-weight: bold;
+}
+
+.main-header {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.create-user {
+    margin-left: 50px;
+    color: #454545;
+    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #454545;
+    position: relative;
+    margin: 1em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    font-family: comfortaa;
+    font-weight: bold;
+}
+
+.create-user:before, .create-user:after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-color: #454545;
+    box-sizing: border-box;
+    border-style: solid;
+    width: 1em;
+    height: 1em;
+    transition: all 0.3s ease-in-out
+}
+
+.create-user:before {
+    top: -6px;
+    left: -6px;
+    border-width: 2px 0 0 2px;
+    z-index: 5;
+}
+
+.create-user:after {
+    bottom: -6px;
+    right: -6px;
+    border-width: 0 2px 2px 0;
+}
+
+.create-user:hover:before, button:hover:after {
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    border-color: #fff
+}
+
+.create-user:hover {
+    color: #353535;
+    background-color: #fff;
+    border-color: #fff
+}
+
+.connect-wallet {
+    margin-left: 50px;
+    color: #06d606 !important;
+    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #06d606 !important;
+    position: relative;
+    margin: 1em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    font-family: comfortaa;
+    font-weight: bold;
+}
+
+    .connect-wallet:before, .connect-wallet:after {
+        content: '';
+        display: block;
+        position: absolute;
+        border-color: #06d606 !important;
+        box-sizing: border-box;
+        border-style: solid;
+        width: 1em;
+        height: 1em;
+        transition: all 0.3s ease-in-out
+    }
+
+    .connect-wallet:before {
+        top: -6px;
+        left: -6px;
+        border-width: 2px 0 0 2px;
+        z-index: 5;
+    }
+
+    .connect-wallet:after {
+        bottom: -6px;
+        right: -6px;
+        border-width: 0 2px 2px 0;
+    }
+
+    .connect-wallet:hover:before, button:hover:after {
+        width: calc(100% + 12px);
+        height: calc(100% + 12px);
+        border-color: #fff
+    }
+
+    .connect-wallet:hover {
+        color: #fff !important;
+        background-color: #06d606 !important;
+        border-color: #06d606 !important;
+    }
+
+
+.create-event {
+    margin-left: 50px;
+    color: #06d606 !important;
+    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #06d606 !important;
+    position: relative;
+    margin: 1em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    font-family: comfortaa;
+    font-weight: bold;
+}
+
+    .create-event:before, .create-event:after {
+        content: '';
+        display: block;
+        position: absolute;
+        border-color: #06d606 !important;
+        box-sizing: border-box;
+        border-style: solid;
+        width: 1em;
+        height: 1em;
+        transition: all 0.3s ease-in-out
+    }
+
+    .create-event:before {
+        top: -6px;
+        left: -6px;
+        border-width: 2px 0 0 2px;
+        z-index: 5;
+    }
+
+    .create-event:after {
+        bottom: -6px;
+        right: -6px;
+        border-width: 0 2px 2px 0;
+    }
+
+    .create-event:hover:before, button:hover:after {
+        width: calc(100% + 12px);
+        height: calc(100% + 12px);
+        border-color: #fff
+    }
+
+    .create-event:hover {
+        color: #fff !important;
+        background-color: #06d606 !important;
+        border-color: #06d606 !important;
+    }
+.create-container {
+    display: inline-flex;
+    max-width: 960px;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    padding-left: 180px;
+}
+
+.create-container button {
+    color: #4f9eff;
+    border-color: #4f9eff;
+    margin: 0 10px;
+}
+
+.create-container button:before, .create-container button:after {
+    border-color: #4f9eff;
+}
+
+.create-container button:hover:before, .create-container button:hover:after {
+    border-color: #4f9eff;
+}
+
+.create-container button:hover {
+    color: #fff;
+    background-color: #4f9eff;
+    border-color: #4f9eff;
+}
 

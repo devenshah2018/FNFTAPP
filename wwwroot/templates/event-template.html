@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .view-tickets {
+            margin-left: 50px;
+            color: #454545;
+            background: transparent;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #454545;
+            position: relative;
+            margin: 1em;
+            display: inline-block;
+            padding: 0.5em 1em;
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+            font-family: comfortaa;
+            font-weight: bold;
+        }
+
+            .view-tickets:before, .view-tickets:after {
+                content: '';
+                display: block;
+                position: absolute;
+                border-color: #454545;
+                box-sizing: border-box;
+                border-style: solid;
+                width: 1em;
+                height: 1em;
+                transition: all 0.3s ease-in-out
+            }
+
+            .view-tickets:before {
+                top: -6px;
+                left: -6px;
+                border-width: 2px 0 0 2px;
+                z-index: 5;
+            }
+
+            .view-tickets:after {
+                bottom: -6px;
+                right: -6px;
+                border-width: 0 2px 2px 0;
+            }
+
+            .view-tickets:hover:before, button:hover:after {
+                width: calc(100% + 12px);
+                height: calc(100% + 12px);
+                border-color: #fff
+            }
+
+            .view-tickets:hover {
+                color: #353535;
+                background-color: #fff;
+                border-color: #fff
+            }
+    </style>
+</head>
+<body>
+    <h1 id="artist"></h1>
+    <p id="event-name"></p>
+    <p id="location"></p>
+    <p id="date-time"></p>
+    <button class="view-tickets" onclick="viewTix()">View Availability</button>
+    <div id="tickets" style="display: none;">
+        <label for="GATix">General Admission Tickets Left: </label>
+        <input id="GATix" type='text' readonly>
+        <br />
+        <label for="VIPTix">VIP Tickets Left: </label>
+        <input id="VIPTix" type='text' readonly>
+    </div>
+
+    <script>
+        function viewTix()
+        {
+            document.getElementById("GATix").value = String(jsonData.GANumber);
+            document.getElementById("VIPTix").value = String(jsonData.VIPNumber);
+            var element = document.getElementById("tickets");
+            element.style.display = "block";
+        }
+        document.addEventListener("DOMContentLoaded",function (event)
+        {
+            var urlParams = new URLSearchParams(window.location.search);
+            var artist = urlParams.get("artist");
+            artist = artist.toUpperCase();
+            document.getElementById("artist").textContent = artist;
+            var jsonString = localStorage.getItem(String(artist.toLowerCase()) + ".json");
+            jsonData = JSON.parse(jsonString);
+            document.getElementById("event-name").textContent = "Event: " + jsonData.Name;
+            document.getElementById("location").textContent = "Location: " + jsonData.Location;
+            document.getElementById("date-time").textContent = "When: " + jsonData.Date.slice(0,-6);
+        });
+        
+
+        
+    </script>
+</body>
+</html>

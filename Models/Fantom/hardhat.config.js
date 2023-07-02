@@ -14,7 +14,7 @@ module.exports = {
       
       chainId: 250,
 
-      accounts: ['c77af31768a1a656eeebaa770af5f61d9632dfa54f6439fc08f9ad534aa9d942'],
+      accounts: ['Enter Wallet PK '],
     },
   },
   coverage: { 
